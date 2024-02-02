@@ -82,11 +82,14 @@ public class SpellChecker {
 		int current = min;
 		for(int i=1;i<dictionary.length;i++){
 			current = levenshtein(word, dictionary[i]);
-			if (current<=min){
+			if (current<min){
 				min = current;
 				closeString = dictionary[i];
-				System.out.println(closeString);
+
+				
 			}
+			if (current == min && word.length()==dictionary[i].length())
+				closeString = dictionary[i];
 
 		}
 		if (min <= threshold){
